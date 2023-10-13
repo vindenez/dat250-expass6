@@ -1,0 +1,36 @@
+<h1>Todos</h1>
+
+<!-- Table to display all Todos -->
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Description</th>
+        <th>Summary</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let todo of todos">
+        <td>{{todo.id}}</td>
+        <td>{{todo.description}}</td>
+        <td>{{todo.summary}}</td>
+        <td>
+            <button (click)="deleteTodo(todo.id)">Delete</button>
+        </td>
+    </tr>
+</table>
+
+<!-- Button to refresh the Todos list -->
+<button (click)="loadTodos()">Refresh</button>
+
+<!-- Form to add a new Todo -->
+<h2>Add New Todo</h2>
+<label for="desc">Description:</label><br>
+<input [(ngModel)]="newTodo.description" type="text" id="desc" name="desc"><br>
+<label for="sum">Summary:</label><br>
+<input [(ngModel)]="newTodo.summary" type="text" id="sum" name="sum"><br>
+<button (click)="addTodo()">Add</button>
+
+<!-- Form to get a specific Todo by its id -->
+<h2>Get Todo by ID</h2>
+<label for="getTodoId">ID:</label><br>
+<input [(ngModel)]="todoIdToRetrieve" type="number" id="getTodoId" name="getTodoId"><br>
+<button (click)="getTodo()">Get Todo</button>
